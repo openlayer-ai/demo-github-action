@@ -1,2 +1,3 @@
-# dogfood-quora
-Erica &amp; Rish dogfooding the product on the Quora Insincere Questions Kaggle dataset
+# Demo of using a GitHub Action to Push to Openlayer
+
+Look at `.github/workflows/train_and_push_to_openlayer.yml` for more details.
