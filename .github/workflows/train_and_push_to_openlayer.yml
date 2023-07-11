@@ -1,0 +1,27 @@
+name: Train model and push to Openlayer
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.8.12
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8.12
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Train and push
+        env:
+          OPENLAYER_API_KEY: ${{ secrets.OPENLAYER_API_KEY }}
+          GITHUB_COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: python train_and_push_to_openlayer.py
